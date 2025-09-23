@@ -18,14 +18,13 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "project.v"
-    - "otp_top.v"
+    - "top.v"
     - "top_7_seg.v"
     - "otp_to_bcd.v"
     - "seven_seg.v"
     - "clk_div.v"
-    - "lfsr_16bit.v"
-    - ""
-    - ""
+    - "lfsr.v"
+    - "fsm1.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
