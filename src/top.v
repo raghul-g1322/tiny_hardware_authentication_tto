@@ -4,12 +4,11 @@ input [3:0]user_in,
 input otp_latch,input user_latch,
 output [6:0] lfsr_out,
 output [6:0] user_out,
-output [3:0] an11, an22
+output [1:0] an
   );
  
 wire [15:0]d_out, user_otp, otp;
 wire [1:0] wrng_atmpt;
-wire [1:0] an;
 wire lock, unlock, expire;
 
 wire lfsr_button, user_button;
@@ -57,9 +56,5 @@ fsm dut2(.clk(clk),
     .seg2(lfsr_out),
     .an(an)
     );
- 
- vivado_decoder(.an(an),
-                .an11(an11),
-                .an22(an22));
       
 endmodule
