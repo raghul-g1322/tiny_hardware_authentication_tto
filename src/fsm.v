@@ -63,7 +63,7 @@ module fsm(
                 total_time <= total_time + 1;
                 if(total_time > (`EXPIRE_TIME*50)) begin // 30 secs
                     //hold_time <= hold_time + 1;
-                    if(hold_time < (50_000_000*5)) begin // 5 secs
+                    if(hold_time < (`HOLD_TIME*5)) begin // 5 secs
                         expired   <= 1;
                         hold_time <= hold_time + 1;
                     end else begin
@@ -106,12 +106,12 @@ end
     case (current)
         IDLE:        next = GENERATE_OTP;
         GENERATE_OTP: if (lfsr_latch) next = ENTER_OTP;
-        ENTER_OTP:   if (total_time > (`EXPIRE_TIME*50) && hold_time == (50_000_000*5)) next = IDLE;// 30 secs
+        ENTER_OTP:   if (total_time > (`EXPIRE_TIME*50) && hold_time == (`HOLD_TIME*5)) next = IDLE;// 30 secs
                      else if (total_time > (`EXPIRE_TIME*50)) next = ENTER_OTP;//30 secs
                      else if (j > 3)    next = UNLOCK;
-        UNLOCK:      if (( otp == {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}} ) && hold_time == (50_000_000*5)) next = IDLE;//hold_time <250_000_000 5 secs
+        UNLOCK:      if (( otp == {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}} ) && hold_time == (`HOLD_TIME*5)) next = IDLE;//hold_time <250_000_000 5 secs
                      else if ( otp == {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}}) next = UNLOCK;
-        else if (wrng_atmpt >= 2 && hold_time == (50_000_000*5) )  next = IDLE;//hold_time <250000000  5 secs
+        else if (wrng_atmpt >= 2 && hold_time == (`HOLD_TIME*5) )  next = IDLE;//hold_time <250000000  5 secs
                      else if (wrng_atmpt >= 2)  next = UNLOCK; 
                      else next = ENTER_OTP ; // go back after check
     endcase
@@ -121,5 +121,6 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
 
