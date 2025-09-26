@@ -28,8 +28,7 @@ module tt_um_tiny_hardware_authentication_engine (
                .user_latch(ui_in[5]),
                .lfsr_out(uo_out[6:0]),
                .user_out(uio_out[6:0]),
-               .an1(uo_out[7]),
-               .an2(uio_out[7]));
+               .an({uo_out[7], uio_out[7]}));
     
   // List all unused inputs to prevent warnings
     wire _unused = &{ena, uio_in, ui_in[7:6], 1'b0};
