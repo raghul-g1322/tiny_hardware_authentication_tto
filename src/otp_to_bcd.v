@@ -79,7 +79,7 @@ module otp_to_bcd(
                     bcd1 = user_otp[15:12];
                 end
                 default: begin
-                    an = 4'b11;
+                    an = 2'b11;
                     bcd1 = 4'd0;
                 end
         endcase
@@ -132,4 +132,5 @@ module otp_to_bcd(
         end
     end
     assign shft = shift;
+
 endmodule
