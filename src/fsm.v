@@ -1,4 +1,4 @@
-`define HOLD_TIME 100_000_000
+`define HOLD_TIME 50_000_000
 `define EXPIRE_TIME 50_000_000
 module fsm(
     input clk,reset,
@@ -16,8 +16,8 @@ module fsm(
     );
     
     //reg unlock ,reset_sys,expired;
-    reg [32:0] total_time;//[29:0] total_time
-    reg [28:0] hold_time;
+    reg [31:0] total_time;//[29:0] total_time
+    reg [27:0] hold_time;
     //reg [1:0] wrng_atmpt;
     reg [1:0] current,next;
     reg [3:0] user_otp[0:3];
@@ -121,4 +121,5 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
