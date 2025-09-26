@@ -20,7 +20,8 @@ module tt_um_tiny_hardware_authentication_engine (
   //assign uo_out  = ;  // Example: ou_out is the sum of ui_in and uio_in
   //assign uio_out = 0;
   assign uio_oe  = 8'hFF;
-  
+    wire [1:0] ano;
+    
     top INST1 (.clk(clk),
                .reset(rst_n),
                .user_in(ui_in[3:0]),
@@ -28,8 +29,9 @@ module tt_um_tiny_hardware_authentication_engine (
                .user_latch(ui_in[5]),
                .lfsr_out(uo_out[6:0]),
                .user_out(uio_out[6:0]),
-               .an({uo_out[7], uio_out[7]}));
+               .an(ano));
     
+    assign {uo_out[7], uio_out[7]} = ano; 
   // List all unused inputs to prevent warnings
     wire _unused = &{ena, uio_in, ui_in[7:6], 1'b0};
 
