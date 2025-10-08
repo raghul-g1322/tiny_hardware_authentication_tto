@@ -117,10 +117,10 @@ end
     endcase
 end
 assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
-//assign disp_state = unlock | expired |reset_sys;
 endmodule
 
  
+
 
 
 
