@@ -1,5 +1,14 @@
 `default_nettype none
 `timescale 1ns / 1ps
+`include "clk_div.v"
+`include "clk_div_2sec.v"
+`include "fsm.v"
+`include "lfsr.v"
+`include "otp_to_bcd.v"
+`include "pos_edge.v"
+`include "seven_seg.v"
+`include "top_7_seg.v"
+`include "top.v"
 
 /* This testbench just instantiates the module and makes some convenient wires
    that can be driven / tested by the cocotb test.py.
