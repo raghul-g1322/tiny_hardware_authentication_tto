@@ -21,7 +21,7 @@ module fsm(
     //reg [1:0] wrng_atmpt;
     reg [1:0] current,next;
     reg [3:0] user_otp[0:3];
-    reg [1:0]j;//index of generated otp
+    reg [2:0]j;//index of generated otp
     parameter IDLE = 2'B00,GENERATE_OTP = 2'B01, ENTER_OTP = 2'B10 ,UNLOCK = 2'B11;
     
     always @(posedge clk or negedge reset) begin
@@ -120,6 +120,7 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
 
 
