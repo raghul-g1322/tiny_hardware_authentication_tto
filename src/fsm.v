@@ -72,7 +72,7 @@ module fsm(
                     end
                 end
                 else if (user_latch ) begin //if (user_latch && j < 4) begin
-                    user_otp[j] <= user_digit;
+                    user_otp[j[1:0]] <= user_digit;
                     j <= j + 1;
                 end
             end
@@ -120,6 +120,7 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
 
 
