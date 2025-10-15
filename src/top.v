@@ -1,5 +1,5 @@
 module top(
-input clk, input reset,
+input clk, input reset_n,
 input [3:0]user_in,
 input otp_latch,input user_latch,
 output [6:0] lfsr_out,
@@ -14,23 +14,23 @@ wire lock, unlock, expire;
 wire lfsr_button, user_button;
 
 pos_edge edge1 (.clk(clk),
-                .reset(reset),
+                .reset(reset_n),
                 .sig_in(otp_latch),
                 .rise_edge(lfsr_button));
                 
 pos_edge edge2 (.clk(clk),
-                .reset(reset),
+                .reset(reset_n),
                 .sig_in(user_latch),
                 .rise_edge(user_button));
                 
 lfsr dut1(
     .clk(clk),
-    .reset(reset),
+    .reset(reset_n),
     .d_out(d_out)
 );
 
 fsm dut2(.clk(clk),
-    .reset(reset),
+    .reset(reset_n),
     .lfsr_digit(d_out),
     .lfsr_latch(lfsr_button),
     .user_digit(user_in),
@@ -45,7 +45,7 @@ fsm dut2(.clk(clk),
     
  top_7_seg dut3(
     .clk(clk),
-    .rstn(reset),
+    .rstn(reset_n),
     .lock(lock),
     .unlock(unlock),
     .expire(expire),
