@@ -23,7 +23,7 @@ module tt_um_tiny_hardware_authentication_engine (
     wire [1:0] ano;
     
     top INST1 (.clk(clk),
-               .reset(rst_n),
+               .reset_n(rst_n),
                .user_in(ui_in[3:0]),
                .otp_latch(ui_in[4]),
                .user_latch(ui_in[5]),
