@@ -9,16 +9,14 @@ module fsm(
     output reg unlock,
     output reg reset_sys,
     output reg expired,
-    //output  disp_state,
     output reg [1:0] wrng_atmpt,
     output [15:0] user_otp_out,
     output reg [15:0] otp
     );
     
-    //reg unlock ,reset_sys,expired;
-    reg [31:0] total_time;//[29:0] total_time
+
+    reg [31:0] total_time;
     reg [27:0] hold_time;
-    //reg [1:0] wrng_atmpt;
     reg [1:0] current,next;
     reg [3:0] user_otp[0:3];
     reg [2:0]j;//index of generated otp
@@ -56,13 +54,11 @@ module fsm(
             
             GENERATE_OTP: if (lfsr_latch) begin
                                otp <= lfsr_digit;  
-                              //otp <= {{(lfsr_digit[3:0])%10},{(lfsr_digit[7:4])%10},{(lfsr_digit[11:8])%10},{(lfsr_digit[15:12])%10}};
                            end
                            
             ENTER_OTP: begin
                 total_time <= total_time + 1;
                 if(total_time > (`EXPIRE_TIME*50)) begin // 30 secs
-                    //hold_time <= hold_time + 1;
                     if(hold_time < (`HOLD_TIME*5)) begin // 5 secs
                         expired   <= 1;
                         hold_time <= hold_time + 1;
@@ -71,7 +67,7 @@ module fsm(
                         hold_time <= 0;
                     end
                 end
-                else if (user_latch ) begin //if (user_latch && j < 4) begin
+                else if (user_latch ) begin
                     user_otp[j[1:0]] <= user_digit;
                     j <= j + 1;
                 end
@@ -84,8 +80,6 @@ module fsm(
                 end 
                 else begin
                     j <= 0;
-                    //total_time <= 0;
-                    
                      if (wrng_atmpt == 2) begin 
                         reset_sys <= 1;
                         hold_time <= hold_time + 1;
@@ -120,6 +114,7 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
 
 
