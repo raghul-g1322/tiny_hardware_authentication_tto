@@ -116,11 +116,6 @@ The FSM manages OTP generation, user input, comparison, and timeout handling.
 | `user_out` | Output | 7 | Decoded user output for 7-segment display |
 | `an` | Output | 2 | Anode control for multiplexed display |
 
----
-
-## Block Diagram
-
-*(Insert image here — e.g., `![DUT Block Diagram](block_diagram.png)`)*
 
 ---
 
