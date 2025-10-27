@@ -32,34 +32,34 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: "a[0]"
-  ui[1]: "a[1]"
-  ui[2]: "a[2]"
-  ui[3]: "a[3]"
-  ui[4]: "a[4]"
-  ui[5]: "a[5]"
-  ui[6]: "a[6]"
-  ui[7]: "a[7]"
+  ui[0]: "user_in[0]"
+  ui[1]: "user_in[1]"
+  ui[2]: "user_in[2]"
+  ui[3]: "user_in[3]"
+  ui[4]: "otp_latch"
+  ui[5]: "user_latch"
+  ui[6]: "Unused"
+  ui[7]: "Unused"
 
   # Outputs
-  uo[0]: "b[0]"
-  uo[1]: "b[1]"
-  uo[2]: "b[2]"
-  uo[3]: "b[3]"
-  uo[4]: "b[4]"
-  uo[5]: "b[4]"
-  uo[6]: "b[5]"
-  uo[7]: "b[6]"
+  uo[0]: "lfsr_out[0]"
+  uo[1]: "lfsr_out[1]"
+  uo[2]: "lfsr_out[2]"
+  uo[3]: "lfsr_out[3]"
+  uo[4]: "lfsr_out[4]"
+  uo[5]: "lfsr_out[5]"
+  uo[6]: "lfsr_out[6]"
+  uo[7]: "an[1]"
 
   # Bidirectional pins
-  uio[0]: "c[0]"
-  uio[1]: "c[1]"
-  uio[2]: "c[2]"
-  uio[3]: "c[3]"
-  uio[4]: "c[4]"
-  uio[5]: "c[5]"
-  uio[6]: "c[6]"
-  uio[7]: "c[7]"
+  uio[0]: "user_out[0]"
+  uio[1]: "user_out[1]"
+  uio[2]: "user_out[2]"
+  uio[3]: "user_out[3]"
+  uio[4]: "user_out[4]"
+  uio[5]: "user_out[5]"
+  uio[6]: "user_out[6]"
+  uio[7]: "an[0]"
 
 # Do not change!
 yaml_version: 6
