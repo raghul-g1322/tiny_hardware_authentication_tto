@@ -100,8 +100,8 @@ end
     case (current)
         IDLE:        next = GENERATE_OTP;
         GENERATE_OTP: if (lfsr_latch) next = ENTER_OTP;
-        ENTER_OTP:   if (total_time > (`EXPIRE_TIME*50) && hold_time == (`HOLD_TIME*5)) next = IDLE;// 30 secs
-                     else if (total_time > (`EXPIRE_TIME*50)) next = ENTER_OTP;//30 secs
+        ENTER_OTP:   if (total_time == (`EXPIRE_TIME*50) && hold_time == (`HOLD_TIME*5)) next = IDLE;// 30 secs
+                     else if (total_time == (`EXPIRE_TIME*50)) next = ENTER_OTP;//30 secs
                      else if (j > 3)    next = UNLOCK;
         UNLOCK:      if (( otp == {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}} ) && hold_time == (`HOLD_TIME*5)) next = IDLE;//hold_time <250_000_000 5 secs
                      else if ( otp == {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}}) next = UNLOCK;
@@ -114,6 +114,7 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
 
 
