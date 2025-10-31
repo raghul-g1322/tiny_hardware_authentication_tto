@@ -58,7 +58,7 @@ module fsm(
                            
             ENTER_OTP: begin
                 total_time <= total_time + 1;
-                if(total_time > (`EXPIRE_TIME*50)) begin // 30 secs
+                if(total_time == (`EXPIRE_TIME*50)) begin // 30 secs
                     if(hold_time < (`HOLD_TIME*5)) begin // 5 secs
                         expired   <= 1;
                         hold_time <= hold_time + 1;
@@ -114,6 +114,7 @@ assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 endmodule
 
  
+
 
 
 
