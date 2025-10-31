@@ -78,7 +78,7 @@ module seven_seg(
                 4'b0110: seg2 = 7'b0000010; // 6
                 4'b0111: seg2 = 7'b1111000; // 7
                 4'b1000: seg2 = 7'b0000000; // 8
-                4'b1009: seg2 = 7'b0010000; // 9
+                4'b1001: seg2 = 7'b0010000; // 9
                 default: seg2 = 7'b1111111; // Blank
             endcase
         end
