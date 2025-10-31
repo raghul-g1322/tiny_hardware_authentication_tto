@@ -1,7 +1,7 @@
 # Tiny Tapeout project information
 project:
   title:        "Tiny Hardware Authentication Engine"      # Project title
-  author:       "Raghul G, Swedha Pragalya V"      # Your name
+  author:       "Raghul G, Swedha Pragalya V, Antony Bacil C"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "A Tiny Hardware Authentication Engine that generates a 4-digit OTP using a 16-bit LFSR with time-bound validity and multi-attempt lockout. The design is lightweight, Tiny Tapeout friendly, and observable on FPGA using LEDs and 7-segment displays."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
