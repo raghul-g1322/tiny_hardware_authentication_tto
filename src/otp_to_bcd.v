@@ -76,11 +76,15 @@ module otp_to_bcd(
     // Toggles every 2 seconds to alternate display between
     // OTP view and system status view
     //======================================================
-    always @(posedge clk_out_disp2 or negedge rstn) begin
+    always @(posedge clk or negedge rstn) begin
         if (!rstn)
             shift <= 0;
-        else
-            shift <= ~shift;
+        else begin
+            if(clk_out_disp2)
+                shift <= ~shift;
+            else
+                shift <= shift;
+        end
     end
     
     //======================================================
@@ -100,15 +104,17 @@ module otp_to_bcd(
     //======================================================
     // Fast clock domain: digit cycling for multiplexed display
     //======================================================
-    always @(posedge clk_out_disp or negedge rstn) begin
+    always @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             ON <= 0;
             disp1 <= 2'd0;
             disp2 <= 2'd0;
         end else begin
-            ON <= 1;                      // Turn on display
-            disp1 <= disp1 + 2'd1;        // Cycle through 4 digits
-            disp2 <= disp2 + 2'd1;
+            if(clk_out_disp) begin
+                ON <= 1;                      // Turn on display
+                disp1 <= disp1 + 2'd1;        // Cycle through 4 digits
+                disp2 <= disp2 + 2'd1;
+            end
         end
     end
     
@@ -184,3 +190,4 @@ module otp_to_bcd(
     assign shft = shift;  // Expose shift flag externally
 
 endmodule
+
