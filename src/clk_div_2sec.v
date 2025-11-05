@@ -27,12 +27,14 @@ module clk_div_2sec(
         end else begin
             if (ct2 == DISP-1) begin    // When counter reaches terminal value
                 ct2 <= 26'd0;           // Reset counter
-                clk_out_disp2 <= ~clk_out_disp2;  // Toggle output clock
+                clk_out_disp2 <= 1'b1;  // Toggle output clock
             end else begin
+                clk_out_disp2 <= 1'b0;
                 ct2 <= ct2 + 26'd1;     // Increment counter each clock cycle
             end
         end
     end
  
 endmodule
+
 
