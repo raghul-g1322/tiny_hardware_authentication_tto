@@ -37,12 +37,14 @@ module clk_div(
             if (ct2 == DISP - 1) begin
                 // When counter reaches the limit, reset and toggle output clock
                 ct2 <= 14'd0;
-                clk_out_disp <= ~clk_out_disp;
+                clk_out_disp <= 1'b1;
             end else begin
                 // Otherwise, keep counting
+                clk_out_disp <= 1'b0;
                 ct2 <= ct2 + 14'd1;
             end
         end
     end
 
 endmodule 
+
