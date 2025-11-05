@@ -25,7 +25,7 @@ module fsm(
     reg [31:0] total_time;         // Timer for OTP expiration
     reg [27:0] hold_time;          // Timer for hold delay after events
     reg [1:0] current, next;       // State registers
-    reg [3:0] user_otp[0:3];       // Stores 4 user digits
+    (* mem2reg *) reg [3:0] user_otp[0:3];       // Stores 4 user digits
     reg [2:0] j;                   // Index for user input collection
 
     // FSM state encoding
@@ -160,3 +160,4 @@ module fsm(
     assign user_otp_out = {{user_otp[0]},{user_otp[1]},{user_otp[2]},{user_otp[3]}};
 
 endmodule
+
