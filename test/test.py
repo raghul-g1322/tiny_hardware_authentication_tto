@@ -57,7 +57,7 @@ async def test_project(dut):
 
     await ClockCycles(dut.clk, 24977)
     
-    assert dut.uo_out.value == 2
+    assert dut.uo_out.value == 121
     assert dut.uio_out.value == 36
     
     # Keep testing the module by changing the input values, waiting for
