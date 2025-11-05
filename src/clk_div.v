@@ -21,30 +21,31 @@ module clk_div(
 );
 
     // 14-bit counter register
-    reg [13:0] ct2;
+    reg [14:0] ct2;
     
     // Parameter to set the division ratio
     // When ct2 counts up to (DISP - 1), output toggles
-    parameter DISP = 12_500;
+    parameter DISP = 25_000;
     
     // Sequential logic: triggered on rising edge of clk or falling edge of rstn
     always @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             // Reset condition: clear counter and output
-            ct2 <= 14'd0;
+            ct2 <= 15'd0;
             clk_out_disp <= 1'b0;
         end else begin
             if (ct2 == DISP - 1) begin
                 // When counter reaches the limit, reset and toggle output clock
-                ct2 <= 14'd0;
+                ct2 <= 15'd0;
                 clk_out_disp <= 1'b1;
             end else begin
                 // Otherwise, keep counting
                 clk_out_disp <= 1'b0;
-                ct2 <= ct2 + 14'd1;
+                ct2 <= ct2 + 15'd1;
             end
         end
     end
 
 endmodule 
+
 
